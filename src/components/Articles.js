@@ -1,7 +1,6 @@
 import React from "react";
 
 function Articles({ articles }) {
-
   return (
     <div className="card w-50 mx-auto">
       <table>
@@ -16,7 +15,9 @@ function Articles({ articles }) {
           {articles.map((article, id) => (
             <tr data-testid="article" key={"article-index" + id}>
               <td data-testid="article-title">{article.title}</td>
-              <td data-testid="article-upvotes">{article.upvotes} </td>
+              <td data-testid="article-upvotes">
+                {article.upvotes.toString()}
+              </td>
               <td data-testid="article-date"> {article.date} </td>
             </tr>
           ))}

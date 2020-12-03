@@ -8,15 +8,16 @@ const title = "Sorting Articles";
 
 function App({ articles }) {
   const [articleList, setArticleList] = useState(articles);
+
   useEffect(() => {
-    sortBy('upvotes');
+    sortBy("upvotes");
   }, []);
 
   function upVotes(a, b) {
-    if (a.upVotes > b.upVotes) {
+    if (a.upvotes > b.upvotes) {
       return -1;
     }
-    if (a.upVotes < b.upVotes) {
+    if (a.upvotes < b.upvotes) {
       return 1;
     }
     return 0;
@@ -38,9 +39,9 @@ function App({ articles }) {
     let newArticles = [];
     Object.assign(newArticles, articleList);
 
-    if (type === 'upvotes') {
+    if (type === "upvotes") {
       newArticles.sort(upVotes);
-    } else if (type === 'dates') {
+    } else if (type === "dates") {
       newArticles.sort(dates);
     }
     setArticleList(newArticles);
