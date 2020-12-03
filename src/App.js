@@ -7,46 +7,45 @@ import Articles from "./components/Articles";
 const title = "Sorting Articles";
 
 function App({ articles }) {
-  const [articleList, setArticleList] = useState(articles);
+    const [articleList, setArticleList] = useState(articles);
 
-  useEffect(() => {
-    sortBy("upvotes");
-  }, []);
+    useEffect(() => {
+        sortBy('upvotes');
+    }, []);
 
-  function upVotes(a, b) {
-    if (a.upvotes > b.upvotes) {
-      return -1;
+    function upVotes(a, b) {
+        if (a.upvotes > b.upvotes) {
+            return -1;
+        }
+        if (a.upvotes < b.upvotes) {
+            return 1;
+        }
+        return 0;
     }
-    if (a.upvotes < b.upvotes) {
-      return 1;
-    }
-    return 0;
-  }
 
-  function dates(a, b) {
-    const aDate = new Date(a.date);
-    const bDate = new Date(b.date);
-    if (aDate > bDate) {
-      return -1;
+    function dates(a, b) {
+        const aDate = new Date(a.date);
+        const bDate = new Date(b.date);
+        if (aDate > bDate) {
+            return -1;
+        }
+        if (aDate < bDate) {
+            return 1;
+        }
+        return 0;
     }
-    if (aDate < bDate) {
-      return 1;
-    }
-    return 0;
-  }
 
-  const sortBy = (type) => {
-    let newArticles = [];
-    Object.assign(newArticles, articleList);
+    const sortBy = (type) => {
+        var newArticles = [];
+        Object.assign(newArticles, articleList);
 
-    if (type === "upvotes") {
-      newArticles.sort(upVotes);
-    } else if (type === "dates") {
-      newArticles.sort(dates);
-    }
-    setArticleList(newArticles);
-  };
-
+        if (type === 'upvotes') {
+            newArticles.sort(upVotes);
+        } else if (type === 'dates') {
+            newArticles.sort(dates);
+        }
+        setArticleList(newArticles);
+    };
   return (
     <div className="App">
       <h8k-navbar header={title}></h8k-navbar>
